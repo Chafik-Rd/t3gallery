@@ -9,7 +9,7 @@ import {
   integer,
   timestamp,
 } from "drizzle-orm/pg-core";
-import { url } from "inspector";
+
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same

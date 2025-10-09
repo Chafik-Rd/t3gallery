@@ -2,5 +2,6 @@ ignoredBuiltDependencies:
   - '@clerk/shared'
   - '@tailwindcss/oxide'
   - esbuild
+  - msgpackr-extract
   - sharp
   - unrs-resolver

@@ -2,6 +2,7 @@ import { db } from "~/server/db";
 import { images } from "~/server/db/schema";
 import { desc } from "drizzle-orm";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
+import Image from "next/image";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +15,7 @@ async function Images() {
     <div className="flex flex-wrap gap-4">
       {imagesList.map((image) => (
         <div key={image.id} className="flex w-48 flex-col">
-          <img src={image.url} alt="image" />
+          <Image src={image.url} alt="image" />
           <div>{image.name}</div>
         </div>
       ))}

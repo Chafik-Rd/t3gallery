@@ -10,12 +10,29 @@ export async function getMyImages() {
 
   if (!user.userId) throw new Error("Unauthorized");
 
-  
-
   const imagesList: (typeof images.$inferSelect)[] = await db
     .select()
     .from(images)
     .where(eq(images.userId, user.userId))
     .orderBy(desc(images.id));
+
   return imagesList;
+}
+
+export async function getImage(id:number) {
+  const user = await auth();
+
+  if (!user.userId) throw new Error("Unauthorized");
+
+  const [image]: (typeof images.$inferSelect)[] = await db
+    .select()
+    .from(images)
+    .where(eq(images.id, id))
+    .limit(1);
+
+    if (!image) throw new Error("Image not found");
+
+    if(image.userId !== user.userId) throw new Error("Unauthorized");
+
+  return image;
 }

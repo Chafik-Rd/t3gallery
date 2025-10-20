@@ -1,5 +1,6 @@
 ignoredBuiltDependencies:
   - '@clerk/shared'
+  - '@sentry/cli'
   - '@tailwindcss/oxide'
   - esbuild
   - msgpackr-extract

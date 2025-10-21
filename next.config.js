@@ -9,6 +9,19 @@ const coreConfig = {
   images: {
     domains: ["utfs.io"], // เพิ่ม domain ของรูป
   },
+
+  async rewrites() {
+    return [
+      {
+        source: "/relay-EfhV/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/relay-EfhV/:path*",
+        destination: "https://us.i.posthog.com/:path*",
+      },
+    ];
+  },
 };
 
 import { withSentryConfig } from "@sentry/nextjs";

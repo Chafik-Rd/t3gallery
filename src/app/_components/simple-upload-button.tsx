@@ -3,6 +3,7 @@
 import { useUploadThing } from "~/utils/uploadthing";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import posthog from "posthog-js";
 
 // inferred input off useUploadThing
 type Input = Parameters<typeof useUploadThing>;

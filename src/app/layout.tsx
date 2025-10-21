@@ -1,5 +1,6 @@
 import "~/styles/globals.css";
 import "@uploadthing/react/styles.css";
+import { Toaster } from "~/components/ui/sonner";
 
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
@@ -46,6 +47,7 @@ export default function RootLayout({
           </div>
           {modal}
           <div id="modal-root" />
+          <Toaster />
         </body>
       </html>
     </ClerkProvider>

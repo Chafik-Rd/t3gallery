@@ -2,7 +2,7 @@
 
 import { db } from "~/server/db";
 import { images } from "~/server/db/schema";
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { auth } from "@clerk/nextjs/server";
 
 export async function getMyImages() {
@@ -19,7 +19,7 @@ export async function getMyImages() {
   return imagesList;
 }
 
-export async function getImage(id:number) {
+export async function getImage(id: number) {
   const user = await auth();
 
   if (!user.userId) throw new Error("Unauthorized");
@@ -30,9 +30,18 @@ export async function getImage(id:number) {
     .where(eq(images.id, id))
     .limit(1);
 
-    if (!image) throw new Error("Image not found");
+  if (!image) throw new Error("Image not found");
 
-    if(image.userId !== user.userId) throw new Error("Unauthorized");
+  if (image.userId !== user.userId) throw new Error("Unauthorized");
 
   return image;
+}
+export async function deleteImage(id: number) {
+  const user = await auth();
+
+  if (!user.userId) throw new Error("Unauthorized");
+
+  await db
+    .delete(images)
+    .where(and(eq(images.id, id), eq(images.userId, user.userId)));
 }

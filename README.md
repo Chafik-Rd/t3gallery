@@ -15,7 +15,7 @@
 - [x] Update upload button to be less cringe
 - [x] ShadUIify (specifically toasts)
 - [x] Analytics (posthong)
-- [ ] Delete button (w/ Server Action)
+- [x] Delete button (w/ Server Action)
 - [ ] Ratelimiting (upstash)
 
 
